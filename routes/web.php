@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Backend\ProfileVillageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,17 +27,23 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin:admin']], function ()
 });
 
 // PROTECT WITH MIDDLEWARE
-Route::middleware(['auth:admin'])->group(function () {
+Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     // ADMIN ALL ROUTES
-    Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+    Route::get('/logout', [AdminController::class, 'destroy'])->name('admin.logout');
 
     // profile
-    Route::get('/admin/profile', [AdminProfileController::class, 'adminProfile'])->name('admin.profile');
-    Route::post('/admin/profile/store', [AdminProfileController::class, 'adminProfileStore'])->name('admin.profile.store');
+    Route::get('/profile', [AdminProfileController::class, 'adminProfile'])->name('admin.profile');
+    Route::post('/profile/store', [AdminProfileController::class, 'adminProfileStore'])->name('admin.profile.store');
 
     // password
-    Route::get('/admin/change/password', [AdminProfileController::class, 'adminChangePassword'])->name('admin.change.password');
-    Route::post('/admin/update/password', [AdminProfileController::class, 'adminUpdatePassword'])->name('admin.update.password');
+    Route::get('/change/password', [AdminProfileController::class, 'adminChangePassword'])->name('admin.change.password');
+    Route::post('/update/password', [AdminProfileController::class, 'adminUpdatePassword'])->name('admin.update.password');
+
+    // profile village
+    Route::prefix('village')->group(function () {
+
+        Route::resource('/profiles', ProfileVillageController::class);
+    });
 }); // END MIDDLEWARE
 
 
