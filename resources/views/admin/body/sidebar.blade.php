@@ -54,7 +54,7 @@
 
 
 		<li>
-          <a href="auth_login.html">
+          <a href="{{route('admin.logout')}}">
             <i data-feather="lock"></i>
 			<span>Log Out</span>
           </a>
