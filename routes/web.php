@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin:admin']], function ()
 Route::middleware(['auth:admin'])->group(function () {
     // ADMIN ALL ROUTES
     Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+
+    // profile
+    Route::get('/admin/profile', [AdminProfileController::class, 'adminProfile'])->name('admin.profile');
+    Route::post('/admin/profile/store', [AdminProfileController::class, 'adminProfileStore'])->name('admin.profile.store');
 }); // END MIDDLEWARE
 
 
