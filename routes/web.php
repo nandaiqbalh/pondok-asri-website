@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Backend\ProfileVillageController;
+use App\Http\Controllers\Backend\ProgramCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +45,8 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
 
         Route::resource('/profiles', ProfileVillageController::class);
     });
+
+    Route::resource('/program-category', ProgramCategoryController::class);
 }); // END MIDDLEWARE
 
 
