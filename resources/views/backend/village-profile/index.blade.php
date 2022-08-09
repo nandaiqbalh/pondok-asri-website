@@ -31,7 +31,7 @@
                    <!-- /.box-header -->
                    <div class="box-body">
                     <div class="mb-10">
-                        <a href="{{ route('profiles.create') }}" class="btn btn-rounded btn-primary">
+                        <a href="{{ route('profiles.create') }}" class="btn btn-primary">
                             + Create Profile
                         </a>
                     </div>
@@ -57,14 +57,14 @@
                                 <td class="border px-6 py-4">{{ $item->address }}</td>
                                 <td class="border px-6 py- text-center">
 
-                                    <a href="{{ route('profiles.edit', $item->id) }}" style="width: 100px" class="btn btn-rounded btn-warning">
+                                    <a href="{{ route('profiles.edit', $item->id) }}" style="width: 100px" class="btn btn-warning">
                                         Edit
                                     </a>
                                     <form action="{{ route('profiles.destroy', $item->id) }}" method="POST" class="inline-block">
                                         {!! method_field('delete') . csrf_field() !!}
                                         <br>
 
-                                        <button type="submit" style="width: 100px" class="btn btn-rounded btn-danger">
+                                        <button type="submit" style="width: 100px" class="btn btn-danger">
                                             Delete
                                         </button>
                                     </form>

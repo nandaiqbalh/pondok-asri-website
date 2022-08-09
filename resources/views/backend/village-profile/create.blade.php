@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="text-xs-right">
-                                <button type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">Create</button>
+                                <button type="submit" class="btn btn-primary mb-5" value="Update">Create</button>
                             </div>
                         </div>
                         </div>
