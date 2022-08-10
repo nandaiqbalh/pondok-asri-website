@@ -11,7 +11,7 @@
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}"><i class="mdi mdi-home-outline"></i></a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Program Category</li>
+                            <li class="breadcrumb-item active" aria-current="page">Program </li>
                         </ol>
                     </nav>
                 </div>
@@ -25,13 +25,13 @@
 
                 <div class="box">
                    <div class="box-header with-border">
-                     <h3 class="box-title">Program Category</h3>
+                     <h3 class="box-title">Program </h3>
                    </div>
                    <!-- /.box-header -->
                    <div class="box-body">
                     <div class="mb-10">
-                        <a href="{{ route('program-category.create') }}" class="btn btn-primary">
-                            + Create Program Category
+                        <a href="{{ route('programs.create') }}" class="btn btn-primary">
+                            + Create Program
                         </a>
                     </div>
                        <div class="table-responsive">
@@ -40,7 +40,10 @@
                                <tr>
                                    <th>No</th>
                                    <th>Name</th>
+                                   <th>Thumbnail</th>
+                                   <th>Category</th>
                                    <th>Description</th>
+                                   <th>Status</th>
                                    <th>Action</th>
                                </tr>
                            </thead>
@@ -49,29 +52,52 @@
                             @php
                                 ($i = 1)
                             @endphp
-                            @forelse($program_categories as $item)
+                            @forelse($programs as $item)
                             <tr>
-                                <th scope="row">{{$program_categories->firstItem()+$loop->index}}</th>
+                                <th scope="row">{{$programs->firstItem()+$loop->index}}</th>
                                 <td class="border px-6 py-4 ">{{ $item->name }}</td>
-                                <td class="border px-6 py-4">{{ $item->description }}</td>
+                                <td class="border px-6 py-4">
+                                    <img src="{{Storage::url($item->thumbnail)}}" alt="Image" width="150px">
+                                </td>
+                                <td class="border px-6 py-4">{{ $item->category->name }}</td>
+                                <td class="border px-6 py-4">{{ $item->short_desc }}</td>
+                                <td class="border px-6 py-4">
+                                    @if ($item -> status == 1)
+                                        <span class="badge badge-pill badge-success">Active</span>
+                                    @else
+                                        <span class="badge badge-pill badge-danger">Inactive</span>
+                                    @endif
+                                </td>
+
                                 <td class="border px-6 py- text-center">
 
-                                    <a href="{{ route('program-category.edit', $item->id) }}" style="width: 100px" class="btn btn-warning">
-                                        Edit
-                                    </a>
-                                    <form action="{{ route('program-category.destroy', $item->id) }}" method="POST" class="inline-block">
-                                        {!! method_field('delete') . csrf_field() !!}
-                                        <br>
+                                    @if ($item -> status == 1)
+                                        <a href="{{ route('program.inactive', $item->id) }}" style="margin-bottom: 4px; width: 75px" class="btn btn-secondary" title="Inactive Now">
+                                            <i class="fa fa-arrow-down"></i>
+                                        </a>
+                                    @else
+                                        <a href="{{ route('program.active', $item->id) }}" style="margin-bottom: 4px; width: 75px" class="btn btn-success" title="Inactive Now">
+                                            <i class="fa fa-arrow-up"></i>
+                                        </a>
+                                    @endif
 
-                                        <button type="submit" style="width: 100px" class="btn btn-danger">
-                                            Delete
+                                    <a href="{{ route('programs.edit', $item->id) }}" style="margin-bottom: 4px; width: 75px" class="btn btn-warning" title="Edit">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                    <form action="{{ route('programs.destroy', $item->id) }}" method="POST" class="inline-block">
+                                        {!! method_field('delete') . csrf_field() !!}
+
+                                        <button type="submit" style="margin-bottom: 4px; width: 75px" class="btn btn-danger" title="Delete">
+                                            <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
+
+
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                               <td colspan="4" class="border text-center p-5">
+                               <td colspan="6" class="border text-center p-5">
                                    Data Tidak Ditemukan
                                </td>
                             </tr>

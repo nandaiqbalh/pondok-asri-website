@@ -50,6 +50,8 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     Route::resource('/program-category', ProgramCategoryController::class);
 
     Route::resource('/programs', ProgramController::class);
+    Route::get('/inactive/{id}', [ProgramController::class, 'programInactive'])->name('program.inactive');
+    Route::get('/active/{id}', [ProgramController::class, 'programActive'])->name('program.active');
 }); // END MIDDLEWARE
 
 

@@ -13,4 +13,9 @@ class Program extends Model
     use SoftDeletes;
 
     protected $guarded = [];
+
+    public function category()
+    {
+        return $this->belongsTo(ProgramCategory::class, 'program_cat_id', 'id');
+    }
 }
