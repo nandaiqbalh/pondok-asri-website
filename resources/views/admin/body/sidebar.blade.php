@@ -35,7 +35,7 @@
           </a>
         </li>
 
-        <li class="treeview {{($prefix == '/admin/programs')?'active' : ''}}" >
+        <li class="treeview {{($prefix == '/admin/program')?'active' : ''}}" >
             <a href="#">
               <i data-feather="server"></i>
               <span>Program</span>
@@ -44,7 +44,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="{{($route == 'program-category.index') ? 'active' : ''}}"><a href="{{route('program-category.index')}}"><i class="ti-more"></i>Program Category</a></li>
+                <li class="{{($route == 'programs.index') || ($route == 'programs.create') || ($route == 'programs.edit') ? 'active' : ''}}"><a href="{{route('programs.index')}}"><i class="ti-more"></i>Program</a></li>
+              <li class="{{($route == 'program-category.index') || ($route == 'program-category.create') || ($route == 'program-category.edit') ? 'active' : ''}}"><a href="{{route('program-category.index')}}"><i class="ti-more"></i>Program Category</a></li>
             </ul>
         </li>
 
