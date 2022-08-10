@@ -10,7 +10,8 @@
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}"><i class="mdi mdi-home-outline"></i></a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Create Village Profile</li>
+                            <li class="breadcrumb-item"><a href="{{route('profiles.index')}}">Village Profile</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><b>Create Village Profile</b></li>
                         </ol>
                     </nav>
                 </div>

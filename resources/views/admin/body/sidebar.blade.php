@@ -28,7 +28,7 @@
           </a>
         </li>
 
-        <li class="{{($route == 'profiles.index') ? 'active' : ''}}">
+        <li class="{{($route == 'profiles.index') || ($route == 'profiles.create') || ($route == 'profiles.edit') ? 'active' : ''}}">
             <a href="{{route('profiles.index')}}">
             <i data-feather="zap"></i>
 			<span>Village Profile</span>

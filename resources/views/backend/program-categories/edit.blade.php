@@ -10,7 +10,8 @@
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}"><i class="mdi mdi-home-outline"></i></a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Edit Program Category</li>
+                            <li class="breadcrumb-item"><a href="{{route('program-category.index')}}">Program Category</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><b>Edit Program Category</b></li>
                         </ol>
                     </nav>
                 </div>
